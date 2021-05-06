@@ -73,6 +73,9 @@ class JournalEntry extends HTMLElement {
      */
     
     // CODE GOES HERE
+     this.shadowRoot.querySelector("h2[class=entry-title]").innerHTML = entry.title;
+     this.shadowRoot.querySelector("p[class=entry-date]").innerHTML = entry.date;
+     this.shadowRoot.querySelector("p[class=entry-content]").innerHTML = entry.content;
 
     if (entry.image) {
       let entryImage;
@@ -82,13 +85,12 @@ class JournalEntry extends HTMLElement {
        * 2. set the image src and alt attributes
        * 3. append the image element to the appropriate location in this component
        */
-
       // CODE GOES HERE vvv
-
-
-
-
-
+      entryImage = document.createElement("img");
+      entryImage.className = "entry-image";
+      entryImage.src = entry.image.src;
+      entryImage.alt = entry.image.alt;
+      this.shadowRoot.querySelector("article").appendChild(entryImage);
       // CODE GOES HERE ^^^
 
       /* ------------- do not edit this code, it is for your debugging purposes ------------- */
@@ -110,12 +112,11 @@ class JournalEntry extends HTMLElement {
        */
 
       // CODE GOES HERE vvv
-
-
-
-
-
-
+      entryAudio = document.createElement("audio");
+      entryAudio.setAttribute("src", entry.audio);
+      entryAudio.setAttribute("controls", true);
+      entryAudio.setAttribute("class", "entry-audio");
+      this.shadowRoot.querySelector("article").appendChild(entryAudio);
       // CODE GOES HERE ^^^
       
 
